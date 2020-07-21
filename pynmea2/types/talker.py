@@ -10,6 +10,31 @@ from decimal import Decimal
 #pylint: disable=missing-docstring
 #pylint: disable=no-init
 #pylint: disable=too-few-public-methods
+class ALM(TalkerSentence):
+    """ Ship-Alarm-Data """
+    fields = (
+        ("Date (DD-MM-YYYY", "date"),
+        ("Time (H-mm-ss", "time"),
+        ("Name Of Event  Status", "event"),
+        ("Unused", "unused"),
+        ("Status of Alarm / Ack NotAck", "status"),
+    )
+
+class DOR(TalkerSentence):
+    """ Door-Change-Data"""
+    fields = (
+        ("Unknown 1", "unknown1"),
+        ("Date (DD-MM-YYYY", "date"),
+        ("Time (H-mm-ss", "time"),
+        ("WT/HD?", "wthd"),
+        ("Unknown 2", "unknown2"),
+        ("Unknown 3", "unknown3"),
+        ("Unknown 4", "unknown4"),
+        ("Old Door Status", "old"),
+        ("New Door Status", "new"),
+        ("Name of Door", "door"),
+    )
+    
 class AAM(TalkerSentence):
     """ Waypoint Arrival Alarm
     """
@@ -21,28 +46,27 @@ class AAM(TalkerSentence):
         ("Waypoint ID", "waypoint_id"),
     )
 
-class ALM(TalkerSentence):
-    """ GPS Almanac data
-    """
-    fields = (
-        ("Total number of messages", "total_num_msgs"),
-        ("Message number", "msg_num"),
-        ("Satellite PRN number", "sat_prn_num"), # 01 - 32
-        ("GPS week number", "gps_week_num"), # Week since Jan 6 1980
-        ("SV Health, bits 17-24 of each almanac page", "sv_health"),
-        ("Eccentricity", "eccentricity"),
-        ("Almanac Reference Time", "alamanac_ref_time"),
-        ("Inclination Angle", "inc_angle"),
-        ("Rate of right ascension", "rate_right_asc"),
-        ("Root of semi-major axis", "root_semi_major_axis"),
-        ("Argument of perigee", "arg_perigee"),
-        ("Longitude of ascension node", "lat_asc_node"),
-        ("Mean anomaly", "mean_anom"),
-        ("F0 Clock parameter", "f0_clock_param"),
-        ("F1 Clock parameter", "f1_clock_param"),
-    )
-
-
+#class ALM(TalkerSentence):
+#    """ GPS Almanac data
+#    """
+#    fields = (
+#        ("Total number of messages", "total_num_msgs"),
+#        ("Message number", "msg_num"),
+#        ("Satellite PRN number", "sat_prn_num"), # 01 - 32
+#        ("GPS week number", "gps_week_num"), # Week since Jan 6 1980
+#        ("SV Health, bits 17-24 of each almanac page", "sv_health"),
+#        ("Eccentricity", "eccentricity"),
+#        ("Almanac Reference Time", "alamanac_ref_time"),
+#        ("Inclination Angle", "inc_angle"),
+#        ("Rate of right ascension", "rate_right_asc"),
+#        ("Root of semi-major axis", "root_semi_major_axis"),
+#        ("Argument of perigee", "arg_perigee"),
+#        ("Longitude of ascension node", "lat_asc_node"),
+#        ("Mean anomaly", "mean_anom"),
+#        ("F0 Clock parameter", "f0_clock_param"),
+#        ("F1 Clock parameter", "f1_clock_param"),
+#    )
+    
 class APA(TalkerSentence):
     """ Autopilot Sentence "A"
     """
